@@ -37,10 +37,10 @@ class TwitterClient(context: Context) : OAuthBaseClient(
         const val REST_URL = "https://api.twitter.com/1.1"
 
         const val REST_CONSUMER_KEY =
-            BuildConfig.CONSUMER_KEY // Change this inside apikey.properties
+            BuildConfig.CONSUMER_KEY
 
         const val REST_CONSUMER_SECRET =
-            BuildConfig.CONSUMER_SECRET // Change this inside apikey.properties
+            BuildConfig.CONSUMER_SECRET
 
         // Landing page to indicate the OAuth flow worked in case Chrome for Android 25+ blocks navigation back to the app.
         const val FALLBACK_URL =
@@ -51,15 +51,15 @@ class TwitterClient(context: Context) : OAuthBaseClient(
             "intent://%s#Intent;action=android.intent.action.VIEW;scheme=%s;package=%s;S.browser_fallback_url=%s;end"
     }
 
-    // CHANGE THIS
-    // DEFINE METHODS for different API endpoints here
-    fun getInterestingnessList(handler: JsonHttpResponseHandler) {
+
+    fun getHomeTimeline(handler: JsonHttpResponseHandler) {
         val apiUrl =
-            getApiUrl("?nojsoncallback=1&method=flickr.interestingness.getList")
+            getApiUrl("statuses/home_timeline.json")
 
         // Can specify query string params directly or through RequestParams.
         val params = RequestParams()
-        params.put("format", "json")
+        params.put("count", "25")
+        params.put("since_id", 1)
         client.get(apiUrl, params, handler)
     }
 
