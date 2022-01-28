@@ -1,4 +1,4 @@
-package com.codepath.apps.restclienttemplate.models
+package com.codepath.apps.restclienttemplate
 
 import java.text.ParseException
 import java.text.SimpleDateFormat
