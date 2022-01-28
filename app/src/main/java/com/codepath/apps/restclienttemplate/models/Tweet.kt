@@ -10,7 +10,8 @@ import org.json.JSONObject
 data class Tweet(
     var body: String = "",
     var createdAt: String = "",
-    var user: User? = null
+    var user: User? = null,
+    var entities: Entity? = null
 ) : Parcelable {
 
     companion object {
@@ -19,6 +20,7 @@ data class Tweet(
             tweet.body = jsonObject.getString("text")
             tweet.createdAt = jsonObject.getString("created_at")
             tweet.user = User.fromJson(jsonObject.getJSONObject("user"))
+            tweet.entities = Entity.fromJson(jsonObject.getJSONObject("entities"))
             return tweet
         }
 

@@ -22,6 +22,7 @@ class DetailActivity : AppCompatActivity() {
         val tvScreenName = findViewById<TextView>(R.id.tvScreenname)
         val tvTweetBody = findViewById<TextView>(R.id.tvTweetBody)
         val tvTimestamp = findViewById<TextView>(R.id.tvTimestamp)
+        val ivMediaImage = findViewById<ImageView>(R.id.ivMediaImage)
 
         val tweet = intent.getParcelableExtra(TWEET_EXTRA) as Tweet
 
@@ -34,6 +35,10 @@ class DetailActivity : AppCompatActivity() {
             .load(tweet.user?.publicImageUrl)
             .transform(CircleCrop())
             .into(ivProfileImage)
+
+        Glide.with(this)
+            .load(tweet.entities?.mediaImageUrl)
+            .into(ivMediaImage)
 
     }
 }

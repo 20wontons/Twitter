@@ -10,8 +10,8 @@
         android:id="@+id/ivProfileImage"
         android:layout_width="@dimen/pfp_size"
         android:layout_height="@dimen/pfp_size"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="@dimen/screen_margin"
+        android:layout_marginTop="@dimen/screen_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -20,9 +20,9 @@
         android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="@dimen/item_margin"
+        android:layout_marginTop="@dimen/screen_margin"
+        android:layout_marginEnd="@dimen/screen_margin"
         android:ellipsize="end"
         android:maxLines="1"
         android:textStyle="bold"
@@ -33,29 +33,30 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/ivProfileImage"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="WONTON" />
+        tools:text="wonton" />
 
     <TextView
         android:id="@+id/tvScreenname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="@dimen/item_margin"
         android:layout_marginTop="5dp"
-        android:textSize="@dimen/std_text_size"
+        android:layout_marginEnd="@dimen/screen_margin"
         android:textColor="@color/dark_gray"
+        android:textSize="@dimen/std_text_size"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/ivProfileImage"
         app:layout_constraintTop_toBottomOf="@+id/tvUsername"
-        app:layout_constraintHorizontal_bias="0.0"
         tools:text="\@devwonton" />
 
     <TextView
         android:id="@+id/tvTweetBody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="@dimen/screen_margin"
+        android:layout_marginTop="@dimen/screen_margin"
+        android:layout_marginEnd="@dimen/screen_margin"
         android:textSize="@dimen/detail_body_text_size"
         android:textColor="@color/black"
         app:layout_constrainedWidth="true"
@@ -69,12 +70,30 @@
         android:id="@+id/tvTimestamp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:textSize="@dimen/std_text_size"
+        android:layout_marginStart="@dimen/screen_margin"
+        android:layout_marginTop="@dimen/screen_margin"
         android:textColor="@color/dark_gray"
+        android:textSize="@dimen/std_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivMediaImage"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="5:08 PM · 27 Jan 2022" />
+
+    <ImageView
+        android:id="@+id/ivMediaImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/screen_margin"
+        android:layout_marginTop="@dimen/screen_margin"
+        android:layout_marginEnd="@dimen/screen_margin"
+        android:layout_marginBottom="60dp"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTweetBody"
-        tools:text="5:08 PM · 27 Jan 2022" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
