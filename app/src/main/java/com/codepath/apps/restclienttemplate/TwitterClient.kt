@@ -71,4 +71,12 @@ class TwitterClient(context: Context) : OAuthBaseClient(
 	 *    i.e client.get(apiUrl, params, handler)
 	 *    i.e client.post(apiUrl, params, handler)
 	 */
+
+    fun getNextPageOfTweets(handler: JsonHttpResponseHandler?, maxId: Long) {
+        val apiUrl = getApiUrl("statuses/home_timeline.json")
+        val params = RequestParams()
+        params["count"] = 25.toString()
+        params["max_id"] = maxId.toString()
+        client[apiUrl, params, handler]
+    }
 }

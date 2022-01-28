@@ -75,7 +75,7 @@ class TweetsAdapter(private val context: Context,
         override fun onClick(p0: View?) {
             val tweet = tweets.get(absoluteAdapterPosition)
             Log.i(TAG, "onClick: $absoluteAdapterPosition")
-            Toast.makeText(context, tweet.user?.name, Toast.LENGTH_SHORT).show()
+//            Toast.makeText(context, tweet.user?.name, Toast.LENGTH_SHORT).show()
             try {
                 val i = Intent(context, DetailActivity::class.java)
                 i.putExtra(TWEET_EXTRA, tweet)

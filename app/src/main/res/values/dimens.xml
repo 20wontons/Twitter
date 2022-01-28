@@ -12,5 +12,6 @@
     <dimen name="pfp_size">60dp</dimen>
     <dimen name="std_text_size">18sp</dimen>
     <dimen name="detail_body_text_size">23sp</dimen>
+    <dimen name="action_icon_size">20dp</dimen>
 
 </resources>

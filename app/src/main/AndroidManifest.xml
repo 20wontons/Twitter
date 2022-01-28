@@ -15,6 +15,7 @@
         android:theme="@style/Theme.RestClientTemplateKotlin">
         <activity
             android:name=".DetailActivity"
+            android:label="Tweet"
             android:exported="false" />
         <activity
             android:name=".TimelineActivity"

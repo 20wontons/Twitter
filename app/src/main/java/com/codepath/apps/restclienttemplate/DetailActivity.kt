@@ -3,6 +3,8 @@ package com.codepath.apps.restclienttemplate
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
@@ -40,5 +42,23 @@ class DetailActivity : AppCompatActivity() {
             .load(tweet.entities?.mediaImageUrl)
             .into(ivMediaImage)
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu) : Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.menu_detail, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle presses on the action bar items
+        when (item.getItemId()) {
+            R.id.miBtnExit -> {
+                finish()
+                return true
+            }
+            else ->
+                return super.onOptionsItemSelected(item)
+        }
     }
 }
