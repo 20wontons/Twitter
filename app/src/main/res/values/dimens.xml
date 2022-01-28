@@ -4,4 +4,9 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <!-- Text and icon sizes -->
+    <dimen name="pfp_size">60dp</dimen>
+    <dimen name="std_text_size">18sp</dimen>
+    <dimen name="detail_body_text_size">23sp</dimen>
+
 </resources>

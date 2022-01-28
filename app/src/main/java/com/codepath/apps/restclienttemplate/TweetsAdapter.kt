@@ -15,6 +15,7 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.codepath.apps.restclienttemplate.models.Tweet
 
 const val TWEET_EXTRA = "TWEET_EXTRA"
@@ -36,10 +37,14 @@ class TweetsAdapter(private val context: Context,
         val tweet: Tweet = tweets.get(position)
 
         holder.tvUserName.text = tweet.user?.name
+        holder.tvScreenName.text = "@${tweet.user?.screenName}"
         holder.tvTweetBody.text = tweet.body
         holder.tvTimestamp.text = TimeFormatter.getTimeDifference(tweet.createdAt)
 
-        Glide.with(holder.itemView).load(tweet.user?.publicImageUrl).into(holder.ivProfileImage)
+        Glide.with(holder.itemView)
+            .load(tweet.user?.publicImageUrl)
+            .transform(CircleCrop())
+            .into(holder.ivProfileImage)
     }
 
     override fun getItemCount(): Int {
@@ -63,6 +68,7 @@ class TweetsAdapter(private val context: Context,
 
         val ivProfileImage = itemView.findViewById<ImageView>(R.id.ivProfileImage)
         val tvUserName = itemView.findViewById<TextView>(R.id.tvUsername)
+        val tvScreenName = itemView.findViewById<TextView>(R.id.tvScreenname)
         val tvTweetBody = itemView.findViewById<TextView>(R.id.tvTweetBody)
         val tvTimestamp = itemView.findViewById<TextView>(R.id.tvTimestamp)
 
@@ -74,13 +80,7 @@ class TweetsAdapter(private val context: Context,
                 val i = Intent(context, DetailActivity::class.java)
                 i.putExtra(TWEET_EXTRA, tweet)
 
-//                val p1 = Pair<View, String>(ivPoster as View, "poster")
-//                val p2 = Pair<View, String>(tvTitle as View, "title")
-//                val p3 = Pair<View, String>(tvOverview as View, "overview")
-//                val options = ActivityOptionsCompat.
-//                makeSceneTransitionAnimation(context as Activity, p1, p2, p3)
-
-                context.startActivity(i)//, options.toBundle())
+                context.startActivity(i)
             } catch (noActivity: ActivityNotFoundException) {
                 noActivity.printStackTrace()
             }
