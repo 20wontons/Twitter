@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.codepath.apps.restclienttemplate.models.Tweet
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import okhttp3.Headers
 import org.json.JSONException
 
@@ -29,6 +30,8 @@ class TimelineActivity : AppCompatActivity() {
     lateinit var swipeContainer: SwipeRefreshLayout
 
     private lateinit var scrollListener: EndlessRecyclerViewScrollListener
+
+    lateinit var btnCompose: FloatingActionButton
 
     val tweets = ArrayList<Tweet>()
 
@@ -73,6 +76,12 @@ class TimelineActivity : AppCompatActivity() {
         }
 
         rvTweets.addOnScrollListener(scrollListener)
+
+        btnCompose = findViewById(R.id.btnCompose)
+        btnCompose.setOnClickListener {
+            val intent = Intent(this, ComposeActivity::class.java)
+            startActivityForResult(intent, REQUEST_CODE)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -81,10 +90,10 @@ class TimelineActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.compose) {
-            val intent = Intent(this, ComposeActivity::class.java)
-            startActivityForResult(intent, REQUEST_CODE)
-        }
+//        if (item.itemId == R.id.compose) {
+//            val intent = Intent(this, ComposeActivity::class.java)
+//            startActivityForResult(intent, REQUEST_CODE)
+//        }
         return super.onOptionsItemSelected(item)
     }
 
