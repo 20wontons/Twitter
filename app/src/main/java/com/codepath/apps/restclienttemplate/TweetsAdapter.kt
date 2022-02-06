@@ -42,10 +42,8 @@ class TweetsAdapter(private val context: Context,
         holder.tvTimestamp.text = TimeFormatter.getTimeDifference(tweet.createdAt)
         if (tweet.retweetCount == 0) {
             holder.tvRetweetCount.text = ""
-        } else if (tweet.retweetCount < 10000) {
+        } else {
             holder.tvRetweetCount.text = tweet.retweetCount.toString()
-        } else if (tweet.retweetCount < 100000) {
-            holder.tvRetweetCount.text = (tweet.retweetCount/1000).toString()
         }
         if (tweet.likeCount == 0) {
             holder.tvLikeCount.text = ""
@@ -55,9 +53,9 @@ class TweetsAdapter(private val context: Context,
         if (tweet.retweeted) {
             holder.ivRetweetBtn.setImageResource(R.drawable.ic_vector_retweet)
         }
-        if (tweet.liked) {
-            holder.ivLikeBtn.setImageResource(R.drawable.ic_vector_heart)
-        }
+//        if (tweet.liked) {
+//            holder.ivLikeBtn.setImageResource(R.drawable.ic_vector_heart)
+//        }
 
         Glide.with(holder.itemView)
             .load(tweet.user?.publicImageUrl)
