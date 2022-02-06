@@ -30,7 +30,7 @@
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
         android:backgroundTint="@color/twitter_blue"
-        android:src="@android:drawable/ic_menu_edit"
+        android:src="@drawable/ic_vector_compose"
         app:layout_anchor="@+id/swipeContainer"
         app:layout_anchorGravity="bottom|right|end"
         app:layout_constraintBottom_toBottomOf="parent"
