@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
 import androidx.recyclerview.widget.RecyclerView
@@ -100,7 +101,9 @@ class TweetsAdapter(private val context: Context,
                 val i = Intent(context, DetailActivity::class.java)
                 i.putExtra(TWEET_EXTRA, tweet)
 
-                context.startActivity(i)
+                //context.startActivity(i)
+                startActivityForResult(context as Activity, i, TimelineActivity.REQUEST_CODE, null)
+                //TODO issue: find out how to return to the timeline activity safely
             } catch (noActivity: ActivityNotFoundException) {
                 noActivity.printStackTrace()
             }

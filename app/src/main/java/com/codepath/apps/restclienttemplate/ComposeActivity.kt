@@ -20,11 +20,17 @@ class ComposeActivity : AppCompatActivity() {
     lateinit var btnTweet: Button
     lateinit var tvCharacterCount: TextView
 
+    var replyScreenName: String? = null
+    var replyId: Long? = null
+
     lateinit var client: TwitterClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_compose)
+
+        replyScreenName = intent.getStringExtra("screenname")
+        replyId = intent.getLongExtra("replyId", 0)
 
         etCompose = findViewById(R.id.etTweetCompose)
         btnTweet = findViewById(R.id.btnTweet)
@@ -48,14 +54,21 @@ class ComposeActivity : AppCompatActivity() {
         client = TwitterApplication.getRestClient(this)
 
         btnTweet.setOnClickListener {
-            val tweetContent = etCompose.text.toString()
+            val tweetContent: String
+
+            if (replyId != 0.toLong()) {
+                tweetContent = "@$replyScreenName " + etCompose.text.toString()
+            } else {
+                replyId = null
+                tweetContent = etCompose.text.toString()
+            }
 
             if (tweetContent.isEmpty()) {
                 Toast.makeText(this, "Empty tweet not allowed!", Toast.LENGTH_SHORT).show()
             } else if (tweetContent.length > 280) {
                 Toast.makeText(this, "Tweet is too long! Limit is 280 characters", Toast.LENGTH_SHORT).show()
             } else {
-                client.publishTweet(tweetContent, object: JsonHttpResponseHandler() {
+                client.publishTweet(tweetContent, replyId, object: JsonHttpResponseHandler() {
                     override fun onSuccess(statusCode: Int, headers: Headers?, json: JSON) {
                         Log.i(TAG, "Successfully published tweet!")
 

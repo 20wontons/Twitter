@@ -17,9 +17,9 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-- [ ] User is using **"Twitter branded" colors and styles**
+- [X] User is using **"Twitter branded" colors and styles**
 - [X] User can click links in tweets launch the web browser
-- [ ] User can **select "reply" from detail view to respond to a tweet**
+- [X] User can **select "reply" from detail view to respond to a tweet**
 - [X] The "Compose" action is moved to a FloatingActionButton instead of on the AppBar
 - [ ] Compose tweet functionality is build using modal overlay
 - [X] Use Parcelable instead of Serializable using the popular [Parceler library](http://guides.codepath.org/android/Using-Parceler).
@@ -42,6 +42,12 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ## Notes
 
 Describe any challenges encountered while building the app.
+
+Known issues:
+- When a displayed tweet is a Retweet, then the like count is not displayed.
+- Sometimes a tweet is wrongly marked as liked, perhaps from the favorites being a nullable value in the API.
+- When a reply is composed and submitted from the detail view, the activity finishes by going through the entire login activity to the timeline activity.
+
 
 ## User Stories (Part 1)
 

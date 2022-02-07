@@ -1,5 +1,6 @@
 package com.codepath.apps.restclienttemplate
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -28,6 +29,7 @@ class DetailActivity : AppCompatActivity() {
         val tvCounts = findViewById<TextView>(R.id.tvCounts)
         val ivRetweetBtn = findViewById<ImageView>(R.id.ivRetweetBtn)
         val ivLikeBtn = findViewById<ImageView>(R.id.ivLikeBtn)
+        val ivReplyBtn = findViewById<ImageView>(R.id.ivReplyBtn)
 
         val tweet = intent.getParcelableExtra(TWEET_EXTRA) as Tweet
 
@@ -50,6 +52,13 @@ class DetailActivity : AppCompatActivity() {
 //        if (tweet.liked) {
 //            ivLikeBtn.setImageResource(R.drawable.ic_vector_heart)
 //        }
+
+        ivReplyBtn.setOnClickListener {
+            val intent = Intent(this, ComposeActivity::class.java)
+            intent.putExtra("screenname", tweet.user?.screenName)
+            intent.putExtra("replyId", tweet.id)
+            startActivityForResult(intent, TimelineActivity.REQUEST_CODE)
+        }
 
         Glide.with(this)
             .load(tweet.user?.publicImageUrl)
@@ -78,5 +87,16 @@ class DetailActivity : AppCompatActivity() {
             else ->
                 return super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == RESULT_OK && requestCode == TimelineActivity.REQUEST_CODE) {
+            val intent = Intent()
+            intent.putExtra("tweet", data)
+            setResult(RESULT_OK, intent)
+            finish()
+            //TODO issue: find out how to return to the timeline activity safely
+        }
+        super.onActivityResult(requestCode, resultCode, data)
     }
 }

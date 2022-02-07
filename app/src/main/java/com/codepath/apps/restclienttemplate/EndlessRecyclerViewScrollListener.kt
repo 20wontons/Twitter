@@ -2,7 +2,7 @@ package com.codepath.apps.restclienttemplate
 
 // From: https://gist.github.com/nesquena/d09dc68ff07e845cc622
 
-//TODO
+
 
 import androidx.recyclerview.widget.RecyclerView
 
