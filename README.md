@@ -42,6 +42,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ## Notes
 
 Describe any challenges encountered while building the app.
+- I couldn't figure out how to change the color (from black to white) of the compose icon in the FloatingActionButton despite changing the tint and/or color of the icon in the .xml file itself
 
 Known issues:
 - When a displayed tweet is a Retweet, then the like count is not displayed.

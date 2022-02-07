@@ -56,7 +56,7 @@ class ComposeActivity : AppCompatActivity() {
         btnTweet.setOnClickListener {
             val tweetContent: String
 
-            if (replyId != 0.toLong()) {
+            if (replyId != null && replyId != 0.toLong() && replyScreenName != null) {
                 tweetContent = "@$replyScreenName " + etCompose.text.toString()
             } else {
                 replyId = null
